@@ -16,6 +16,15 @@ transaction.charge(function(error, response) {
 		return console.log(error);
 	}
 
-	console.log(response);
+	console.log('Created transaction #' + response.id);
+
+	pagarme.transaction.refund(response.id, function(respose){
+		console.log('Refunded transaction #' + response.id);
+
+		pagarme.transaction.get(response.id, function(response) {
+			console.log('Current values to transaction:');
+			console.log(response);
+		});
+	});
 });
 
