@@ -70,3 +70,12 @@ pagarme.transaction.get(id, function(err, response) {
 ```
 
 -----
+
+
+## Todo
+
+* Params(count & page) in transaction get list
+* test
+* plans
+* subscriptions
+* npm module
