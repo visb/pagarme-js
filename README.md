@@ -74,10 +74,5 @@ pagarme.transaction.get(id, function(err, response) {
 
 ## Todo
 
-* transactions
-    * Params(count, page, search) in get list
-    * params on refund
-    * test
-* plans
-* subscriptions
+* test
 * npm module
