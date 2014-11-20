@@ -5,7 +5,8 @@
   "main": "lib/pagarme.js",
   "dependencies": {
     "node-rsa": "~0.1.53",
-    "restler": "~3.2.2"
+    "request": "~2.x",
+    "merge": "~1.x"
   },
   "devDependencies": {},
   "scripts": {
