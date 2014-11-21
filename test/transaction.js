@@ -1,20 +1,21 @@
-/**
- * Apenas prototipo dos testes, não está configurado para rodar,
- * estão aqui apenas para implementação futura
- */
+var Pagarme = require('pagarme');
+
 describe('be able to charge', function() {
         
-    var transaction = pagarme.transaction.create({
-        card_number: '4901720080344448',
-        card_holder_name: 'Usuario de Testes',
-        card_expiration_year: '16',
-        card_expiration_month: '02',
-        card_cvv: '314',
-        amount: '1000'
-    }, function(err, response) {
-        if (err) return console.log(err);
+  var transaction = new Pagarme.Transaction({
+    card_number: '4901720080344448',
+    card_holder_name: 'Usuario de Testes',
+    card_expiration_year: '16',
+    card_expiration_month: '02',
+    card_cvv: '314',
+    amount: '1000'
+  }).charge(function() {
+    console.log(arguments);
+  });
 
-        console.log('Created transaction #' + response.id);
+});
+});
+.log(arguments);
     });
     
 });
@@ -76,5 +77,19 @@ describe('be able to capture a transaction and pass an amount', function() {
 });
 
 describe('validate invalid transaction', function() {
+    
+});
+);
+e('validate invalid transaction', function() {
+    
+});
+on', function() {
+    
+});
+
+e('validate invalid transaction', function() {
+    
+});
+on', function() {
     
 });
