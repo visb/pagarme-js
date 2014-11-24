@@ -15,3 +15,15 @@ describe('be able to charge', function(){
     console.log(this.id);
   });
 });
+
+describe('be able to create transaciton with boleto', function(){
+  var transaction = new Pagarme.Transaction({
+    payment_method: 'boleto',
+    amount: '1000'
+  });
+
+  transaction.charge(function() {
+    console.log(this.id);
+    console.log(this.status); // wayting_payment
+  });
+});
