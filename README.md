@@ -1,78 +1,86 @@
 # pagarme-js
 
-Implementation of pagarme's api to nodejs
+PagarMe in nodejs
 
 -----
-
 
 ## Usage
 
-### Initialize
-
 ```js
-var pagarme = require('pagarme')('[ --- Api Key --- ]');
-
-// or
-var pagarme = require('pagarme')();
-pagarme.apiKey = '[ --- Api Key --- ]';
+var Pagarme = require('./lib/pagarme');
+Pagarme.apiKey = ' [ ... ApiKey ... ]';
 ```
 
------
-
-
-### Transactions
-
-* **Create**: create a transaction
+**Transaction**
 
 ```js
-pagarme.transaction.create({
-    card_number: '4901720080344448',
-    card_holder_name: 'Usuario de Testes',
-    card_expiration_year: '16',
-    card_expiration_month: '02',
-    card_cvv: '314',
-    amount: '1000'
-}, function(err, response) {
-    if (err) return console.log(err);
-    
-    console.log(response); // details of transaction
+var transaction = new Pagarme.Transaction({
+  amount: 100,
+
+  card_hash: '[CARD_HASH]'
+  // or
+  card_number: '4901720080344448',
+  card_holder_name: 'Usuario de Testes',
+  card_expiration_year: '16',
+  card_expiration_month: '02',
+  card_cvv: '314'
 });
+transaction.charge();
+
+// get one
+var id;
+Pagarme.Transaction().get(id, function(error) {
+  if (error) return console.log(error);
+
+  console.log(this.status);
+});
+
+// list
+var page, count; // optional params
+Pagarme.Transaction().all(function(error) {
+  if (error) return console.log(error);
+
+  this.forEach(function(item) {
+    console.log('#' + item.id + ' : ' + item.status);
+  });
+}, page, count);
+
+// search
+var page, count; // optional params
+var options = { status: paid };
+Pagarme.Transaction().find(options, function(error) {
+  console.log(this.length + ' transactions found');
+  this.forEach(function(item) {
+    console.log('#' + item.id);
+  });
+}, page, count);
 ```
 
-* **Get**: Return a transaction if passed id exists, or an error
+**Plan**
 
 ```js
-pagarme.transaction.get(id, function(err, response) {
-    if (err) return console.log(err);
-    
-    console.log(response); // details of transaction
+var plan = new Pagarme.Plan({
+  name: 'Teste',
+  days: 15,
+  amount: 10
 });
+plan.create();
 ```
 
-* **Get list**: Return a list with all transaction created with current api_key
+**Subscription**
 
 ```js
-pagarme.transaction.get(function(err, response) {
-    if (err) return console.log(err);
-    
-    console.log(response); // list of transactions
+var subscription = new Pagarme.Subscription({
+  plan_id: plan.id,
+  customer: { email: 'test@test.com' },
+
+  card_hash: '[CARD_HASH]',
+  // or
+  card_number: '4901720080344448',
+  card_holder_name: 'Usuario de Testes',
+  card_expiration_year: '16',
+  card_expiration_month: '02',
+  card_cvv: '314'
 });
+subscription.charge();
 ```
-
-* **Refund**: refund a transaction if passed id exists, or an error
-
-```js
-pagarme.transaction.get(id, function(err, response) {
-    if (err) return console.log(err);
-    
-    console.log(response); // details of transaction
-});
-```
-
------
-
-
-## Todo
-
-* test
-* npm module
