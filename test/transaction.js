@@ -50,3 +50,9 @@ describe('be able to refund', function() {
     });
   });
 });
+
+describe('be able to find a transaction', function() {
+  Pagarme.Transaction().get(168927, function() {
+    console.log(this.status);
+  });
+});
