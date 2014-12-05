@@ -7,11 +7,16 @@
     "merge": "~1.x",
     "node-rsa": "~0.1.53",
     "request": "~2.x",
-    "sha1": "^1.1.0"
+    "sha1": "~1.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "gulp": "^3.8.10",
+    "gulp-mocha": "^2.0.0",
+    "nock": "^0.51.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
