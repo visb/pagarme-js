@@ -19,6 +19,15 @@ describe('Transaction', function() {
     });
   });
 
+  it('be able to receive validation warnings', function(done) {
+    mock.transaction.create('invalid_credit_card', 401);
+    new Pagarme.Transaction(params.transaction.invalid_credit_card).charge(function(error) {
+      expect(error).to.exist();
+      expect(error.parameter_name).to.equal('card_number');
+      done();
+    });
+  });
+
   it('be able to pay with boleto', function(done) {
     mock.transaction.create('boleto');
     var transaction = new Pagarme.Transaction(params.transaction.boleto);

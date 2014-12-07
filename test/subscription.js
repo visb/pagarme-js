@@ -19,6 +19,15 @@ describe('Subscription', function() {
     });
   });
 
+  it('be able to receive validation warnings', function(done) {
+    mock.subscription.create('invalid_credit_card', 401);
+    new Pagarme.Subscription(params.subscription.invalid_credit_card).charge(function(error) {
+      expect(error).to.exist();
+      expect(error.parameter_name).to.equal('card_number');
+      done();
+    });
+  });
+
   it('be able to pay with boleto', function(done) {
     mock.subscription.create('boleto');
     var subscription = new Pagarme.Subscription(params.subscription.boleto);

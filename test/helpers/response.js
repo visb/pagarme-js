@@ -5,6 +5,11 @@ module.exports = {
         id: 1,
         status: 'paid'
       },
+      invalid_credit_card: {
+        errors: {
+          parameter_name: 'card_number'
+        }
+      },
       boleto: {
         id: 1,
         status: 'wayting_payment',
@@ -28,6 +33,11 @@ module.exports = {
       credit_card: {
         id: 1,
         status: 'paid'
+      },
+      invalid_credit_card: {
+        errors: {
+          parameter_name: 'card_number'
+        }
       },
       boleto: {
         id: 1,

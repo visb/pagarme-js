@@ -11,6 +11,7 @@ var card = {
 module.exports = {
   transaction: {
     credit_card: merge({}, card, { amount: 1000 }),
+    invalid_credit_card: merge({}, card, { amount: 1000, card_number: '000' }),
     boleto: {
       amount: 1000,
       payment_method: 'boleto',
@@ -21,6 +22,7 @@ module.exports = {
   },
   subscription: {
     credit_card: merge({}, card, { plan_id: 1 }),
+    invalid_credit_card: merge({}, card, { plan_id: 1, card_number: '000' }),
     boleto: {
       plan_id: 1,
       payment_method: 'boleto',

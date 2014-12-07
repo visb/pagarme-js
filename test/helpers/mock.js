@@ -10,9 +10,9 @@ var patfy = function(module) {
 
 var mock = {
   transaction: {
-    create: function(response) {
+    create: function(response, status) {
       httpMockWrap.post(patfy('transactions'))
-        .reply(200, responses.transaction.create[response]);
+        .reply(status || 200, responses.transaction.create[response]);
 
       mock.card_hash_key();
     },
@@ -34,27 +34,27 @@ var mock = {
     }
   },
   subscription: {
-    create: function(response) {
+    create: function(response, status) {
       httpMockWrap.post(patfy('subscriptions'))
-        .reply(200, responses.transaction.create[response]);
+        .reply(status || 200, responses.subscription.create[response]);
 
       mock.card_hash_key();
     },
     refund: function(id) {
       httpMockWrap.post(patfy(['subscriptions', id, 'refund']))
-        .reply(200, responses.transaction.refund);
+        .reply(200, responses.subscription.refund);
     },
     find: function() {
       httpMockWrap.get(patfy('subscriptions'))
-        .reply(200, responses.transaction.find);
+        .reply(200, responses.subscription.find);
     },
     get: function(id) {
       httpMockWrap.get(patfy(['subscriptions', id]))
-        .reply(200, responses.transaction.get);
+        .reply(200, responses.subscription.get);
     },
     all: function() {
       httpMockWrap.get(patfy('subscriptions'))
-        .reply(200, responses.transaction.all);
+        .reply(200, responses.subscription.all);
     }
   },
   card_hash_key: function() {
