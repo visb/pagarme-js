@@ -1,4 +1,4 @@
-# pagarme-js
+# pagarme-js [![Build Status](https://travis-ci.org/visb/pagarme-js.svg)](https://travis-ci.org/visb/pagarme-js)
 
 PagarMe in nodejs
 
