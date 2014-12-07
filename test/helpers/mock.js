@@ -60,6 +60,30 @@ var mock = {
   card_hash_key: function() {
     httpMockWrap.get(patfy('transactions/card_hash_key'))
       .reply(200, responses.card_hash_key);
+  },
+  plan: {
+    create: function() {
+      httpMockWrap.post(patfy('plans'))
+        .reply(200, responses.plan.create);
+
+      mock.card_hash_key();
+    },
+    find: function() {
+      httpMockWrap.get(patfy('plans'))
+        .reply(200, responses.plan.find);
+    },
+    get: function(id) {
+      httpMockWrap.get(patfy(['plans', id]))
+        .reply(200, responses.plan.get);
+    },
+    all: function() {
+      httpMockWrap.get(patfy('plans'))
+        .reply(200, responses.plan.all);
+    }
+  },
+  card_hash_key: function() {
+    httpMockWrap.get(patfy('transactions/card_hash_key'))
+      .reply(200, responses.card_hash_key);
   }
 };
 

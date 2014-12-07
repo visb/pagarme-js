@@ -20,6 +20,7 @@ module.exports = {
       }
     }
   },
+
   subscription: {
     credit_card: merge({}, card, { plan_id: 1 }),
     invalid_credit_card: merge({}, card, { plan_id: 1, card_number: '000' }),
@@ -29,6 +30,14 @@ module.exports = {
       customer: {
         email: 'contact@example.com'
       }
+    }
+  },
+
+  plan: {
+    create: {
+      name: 'Teste',
+      amount: 1000,
+      days: 15
     }
   }
 };
