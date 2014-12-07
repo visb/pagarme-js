@@ -10,6 +10,13 @@ var card = {
 
 module.exports = {
   transaction: {
-    credit_card: merge({}, card, { amount: 1000 })
+    credit_card: merge({}, card, { amount: 1000 }),
+    boleto: {
+      amount: 1000,
+      payment_method: 'boleto',
+      customer: {
+        email: 'contact@example.com'
+      }
+    }
   }
 };

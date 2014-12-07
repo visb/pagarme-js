@@ -4,8 +4,24 @@ module.exports = {
       credit_card: {
         id: 1,
         status: 'paid'
+      },
+      boleto: {
+        id: 1,
+        status: 'wayting_payment',
+        boleto_url: 'http://pagar.me/boleto/1',
+        payment_method: 'boleto'
       }
-    }
+    },
+    refund: {
+      status: 'refunded'
+    },
+    find: [
+      { id: 2 }, { id: 3 }, { id: 5 }, { id: 6 }
+    ],
+    all: [
+      { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }
+    ],
+    get: { id: 1 }
   },
   card_hash_key: {
     id: 108266,
