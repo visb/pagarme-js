@@ -18,5 +18,15 @@ module.exports = {
         email: 'contact@example.com'
       }
     }
+  },
+  subscription: {
+    credit_card: merge({}, card, { plan_id: 1 }),
+    boleto: {
+      plan_id: 1,
+      payment_method: 'boleto',
+      customer: {
+        email: 'contact@example.com'
+      }
+    }
   }
 };
